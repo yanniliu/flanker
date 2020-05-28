@@ -28,19 +28,19 @@
         /*defining stimuli*/
         var test_stimuli = [
           {
-            stimulus: "img/con1.png",
+            stimulus: repo_site + "img/con1.png",
             data: { stim_type: 'congruent', direction: 'left'}
           },
           {
-            stimulus: "img/con2.png",
+            stimulus: repo_site + "img/con2.png",
             data: { stim_type: 'congruent', direction: 'right'}
           },
           {
-            stimulus: "img/inc1.png",
+            stimulus: repo_site + "img/inc1.png",
             data: { stim_type: 'incongruent', direction: 'right'}
           },
           {
-            stimulus: "img/inc2.png",
+            stimulus: repo_site + "img/inc2.png",
             data: { stim_type: 'incongruent', direction: 'left'}
           }
         ];

@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Flanker Task</title>
-        <script src="jspsych-6.1.0/jspsych.js"></script>
-        <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
-        <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>
-        <link rel="stylesheet" href="jspsych-6.1.0/css/jspsych.css">
-    </head>
-    <body>
-    </body>
-    <script>
+
 	
 	/* Change 1: Adding the image hosting site */
     // define the site that hosts stimuli images
@@ -112,12 +101,5 @@ jsPsych.data.addProperties({
         timeline.push(test);
         timeline.push(debrief);
 
-        /*start experiment*/
-        jsPsych.init({
-            timeline: timeline,
-            on_finish: function (data) {
-                    jsPsych.data.get().localSave('csv', 'flanker.csv');
-                }
-        });
-    </script>
-</html>
+
+

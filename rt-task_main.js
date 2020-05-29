@@ -6,7 +6,7 @@
     var repo_site = "https://yanniliu.github.io/flanker/"; 
 
         /* experiment parameters */
-        var reps_per_trial_type = 5;
+        var reps_per_trial_type = 2;
 
         /*set up welcome block*/
         var welcome = {
@@ -84,8 +84,8 @@
     var test_procedure = {
       timeline: [fixation, test],
       timeline_variables: test_stimuli,
-      /*repetitions: 5,
-      randomize_order: true */
+      repetitions: 3,
+      randomize_order: true
     }
         /*defining debriefing block*/
         var debrief = {

@@ -110,8 +110,8 @@ jsPsych.data.addProperties({
         var timeline = [];
         timeline.push(welcome);
         timeline.push(instructions);
-       /* timeline.push(test);*/
-        timeline.push(test_procedure);
+        timeline.push(test);
+        /*timeline.push(test_procedure);
         timeline.push(debrief);
 
 

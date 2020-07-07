@@ -5,8 +5,6 @@
     // usually https://<your-github-username>.github.io/<your-experiment-name>/
     var repo_site = "https://yanniliu.github.io/flanker/"; 
 
-        /* experiment parameters */
-        var reps_per_trial_type = 2;
 
         /*set up welcome block*/
         var welcome = {
@@ -43,6 +41,22 @@
             stimulus: repo_site + "img/inc2.png",
             data: { stim_type: 'incongruent', direction: 'left'}
           }
+		  {
+            stimulus: repo_site + "img/con1.png",
+            data: { stim_type: 'congruent', direction: 'left'}
+          },
+          {
+            stimulus: repo_site + "img/con2.png",
+            data: { stim_type: 'congruent', direction: 'right'}
+          },
+          {
+            stimulus: repo_site + "img/inc1.png",
+            data: { stim_type: 'incongruent', direction: 'right'}
+          },
+          {
+            stimulus: repo_site + "img/inc2.png",
+            data: { stim_type: 'incongruent', direction: 'left'}
+          }
         ];
 
    /*defining fixation*/ 
@@ -50,7 +64,7 @@
       type: 'html-keyboard-response',
       stimulus: '<div style="font-size:60px;">+</div>',
       choices: jsPsych.NO_KEYS,
-      trial_duration: 500,
+      trial_duration: 300,
 	  data: {test_part: 'fixation'}
     }
     
@@ -81,8 +95,18 @@
   timeline: [fixation, test],
   timeline_variables: test_stimuli,
   randomize_order: true,
-  repetitions: 5
+  repetitions: 6
 }
+
+var takerest = {
+          type: "html-keyboard-response",
+          stimulus: "<p> Please take a break.</p>"+
+            
+            "<p>Press any key to begin.</p>",
+          post_trial_gap: 5000
+        };
+		
+		
         /*defining debriefing block*/
         var debrief = {
           type: "html-keyboard-response",
@@ -112,6 +136,8 @@ jsPsych.data.addProperties({
         timeline.push(welcome);
         timeline.push(instructions);
         timeline.push(test_procedure);
+		timeline.push(testrest);
+		timeline.push(test_procedure);
         timeline.push(debrief);
 
 

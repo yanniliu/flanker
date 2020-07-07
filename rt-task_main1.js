@@ -91,18 +91,17 @@
   
         };
 
- var test_procedure = {
-  timeline: [fixation, test],
-  timeline_variables: test_stimuli,
-  randomize_order: true,
-  repetitions: 6
-}
+     var test_procedure = {
+       timeline: [fixation, test],
+       timeline_variables: test_stimuli,
+       randomize_order: true,
+       repetitions: 6
+     }
 
-var takerest = {
+       var takerest = {
           type: "html-keyboard-response",
           stimulus: "<p> Please take a break.</p>"+
-            
-            "<p>Press any key to begin.</p>",
+           "<p>Press any key to begin.</p>",
           post_trial_gap: 5000
         };
 		

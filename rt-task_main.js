@@ -78,7 +78,7 @@
             }
           }],
           timeline_variables: test_stimuli,
-          sample: {type: 'fixed-repetitions', size: reps_per_trial_type}*/
+          sample: {type: 'fixed-repetitions', size: reps_per_trial_type}
         };
 
  

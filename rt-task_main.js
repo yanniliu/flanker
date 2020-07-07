@@ -78,16 +78,10 @@
             }
           }],
           timeline_variables: test_stimuli,
-       /*   sample: {type: 'fixed-repetitions', size: reps_per_trial_type}*/
+          sample: {type: 'fixed-repetitions', size: reps_per_trial_type}*/
         };
 
-    var test_procedure = {
-     // timeline: [fixation, test],
-      timeline_variables: test_stimuli,
-      repetitions: 3,
-      randomize_order: true
-	   /* sample: {type: 'fixed-repetitions', size: reps_per_trial_type} */
-    }
+ 
         /*defining debriefing block*/
         var debrief = {
           type: "html-keyboard-response",

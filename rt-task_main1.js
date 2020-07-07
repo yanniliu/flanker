@@ -40,7 +40,7 @@
           {
             stimulus: repo_site + "img/inc2.png",
             data: { stim_type: 'incongruent', direction: 'left'}
-          }
+          },
 		  {
             stimulus: repo_site + "img/con1.png",
             data: { stim_type: 'congruent', direction: 'left'}

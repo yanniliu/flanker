@@ -6,7 +6,7 @@
     var repo_site = "https://yanniliu.github.io/flanker/"; 
 
         /* experiment parameters */
-        var reps_per_trial_type = 10;
+        var reps_per_trial_type = 2;
 
         /*set up welcome block*/
         var welcome = {
@@ -45,6 +45,17 @@
           }
         ];
 
+   /*defining fixation*/ 
+   var fixation = {
+      type: 'html-keyboard-response',
+      stimulus: '<div style="font-size:60px;">+</div>',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: function(){
+        return jsPsych.randomization.sampleWithoutReplacement([250, 500, 750, 1000, 1250, 1500, 1750, 2000], 1)[0];
+      },
+      data: {test_part: 'fixation'}
+    }
+    
         /* defining test timeline */
         var test = {
           timeline: [{
@@ -63,13 +74,20 @@
               data.correct = correct;
             },
             post_trial_gap: function() {
-                return Math.floor(Math.random() * 1500) + 500;
+                return Math.floor(Math.random() * 1500) + 100;
             }
           }],
           timeline_variables: test_stimuli,
-          sample: {type: 'fixed-repetitions', size: reps_per_trial_type}
+       /*   sample: {type: 'fixed-repetitions', size: reps_per_trial_type}*/
         };
 
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      repetitions: 3,
+      randomize_order: true
+	   /* sample: {type: 'fixed-repetitions', size: reps_per_trial_type} */
+    }
         /*defining debriefing block*/
         var debrief = {
           type: "html-keyboard-response",
@@ -98,7 +116,8 @@ jsPsych.data.addProperties({
         var timeline = [];
         timeline.push(welcome);
         timeline.push(instructions);
-        timeline.push(test);
+       /* timeline.push(test);*/
+        timeline.push(test_procedure);
         timeline.push(debrief);
 
 

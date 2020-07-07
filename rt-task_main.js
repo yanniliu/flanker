@@ -82,7 +82,7 @@
         };
 
     var test_procedure = {
-      timeline: [fixation, test],
+     // timeline: [fixation, test],
       timeline_variables: test_stimuli,
       repetitions: 3,
       randomize_order: true

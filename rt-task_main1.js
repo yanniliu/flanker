@@ -135,7 +135,7 @@ jsPsych.data.addProperties({
         timeline.push(welcome);
         timeline.push(instructions);
         timeline.push(test_procedure);
-	timeline.push(instructions);
+	timeline.push(takerest);
 	timeline.push(test_procedure);
         timeline.push(debrief);
 

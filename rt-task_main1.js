@@ -102,7 +102,7 @@
           type: "html-keyboard-response",
           stimulus: "<p> Please take a break.</p>"+
            "<p>Press any key to begin.</p>",
-           post_trial_gap: 5000
+           post_trial_gap: 3000
         };
 		
 		
@@ -135,6 +135,7 @@ jsPsych.data.addProperties({
         timeline.push(welcome);
         timeline.push(instructions);
         timeline.push(test_procedure);
+        timeline.push(debrief);
 	timeline.push(takerest);
 	timeline.push(test_procedure);
         timeline.push(debrief);

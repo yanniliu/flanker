@@ -1,9 +1,9 @@
 
 	
-	/* Change 1: Adding the image hosting site */
-    // define the site that hosts stimuli images
-    // usually https://<your-github-username>.github.io/<your-experiment-name>/
-    var repo_site = "https://yanniliu.github.io/flanker/"; 
+       /* Change 1: Adding the image hosting site */
+       // define the site that hosts stimuli images
+       // usually https://<your-github-username>.github.io/<your-experiment-name>/
+        var repo_site = "https://yanniliu.github.io/flanker/"; 
 
 
         /*set up welcome block*/
@@ -59,16 +59,16 @@
           }
         ];
 
-   /*defining fixation*/ 
-   var fixation = {
-      type: 'html-keyboard-response',
-      stimulus: '<div style="font-size:60px;">+</div>',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 300,
+       /*defining fixation*/ 
+       var fixation = {
+          type: 'html-keyboard-response',
+          stimulus: '<div style="font-size:60px;">+</div>',
+      	  choices: jsPsych.NO_KEYS,
+          trial_duration: 300,
 	  data: {test_part: 'fixation'}
-    };
+       };
     
-   /* defining test timeline */
+       /* defining test timeline */
         var test = {
          
             type: 'image-keyboard-response',
@@ -91,39 +91,39 @@
   
         };
 
-     var test_procedure = {
-       timeline: [fixation, test],
-       timeline_variables: test_stimuli,
-       randomize_order: true,
-       repetitions: 3
-     };
-
-     var prac_procedure = {
-       timeline: [fixation, test],
-       timeline_variables: test_stimuli,
-       randomize_order: true,
-       repetitions: 1
-     };
-
-     var feedback = {
-          type: "html-keyboard-response",
-          stimulus: function() {
-            var total_trials = jsPsych.data.get().filter({trial_type: 'image-keyboard-response'}).count();
-            var accuracy = Math.round(jsPsych.data.get().filter({correct: true}).count() / total_trials * 100);
-            var congruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'congruent'}).select('rt').mean());
-            var incongruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'incongruent'}).select('rt').mean());
-            var rt = Math.round(jsPsych.data.get().filter({correct: true}).select('rt').mean());
-            return "<p>You responded correctly on <strong>"+accuracy+"%</strong> of the trials.</p> " +
-	    "<p>Your average response time for correct trials was <strong>" + rt + "ms</strong>.</p>"+ 
-            "<p>Press any key to start the experiment. Thank you!</p>";
-          }
+       var test_procedure = {
+           timeline: [fixation, test],
+           timeline_variables: test_stimuli,
+           randomize_order: true,
+           repetitions: 3
         };
 
-      var takerest = {
-          type: "html-keyboard-response",
-          stimulus: "<p> Please take a break.</p>"+
+       var prac_procedure = {
+           timeline: [fixation, test],
+           timeline_variables: test_stimuli,
+           randomize_order: true,
+           repetitions: 1
+        };
+
+       var feedback = {
+           type: "html-keyboard-response",
+           stimulus: function() {
+             var total_trials = jsPsych.data.get().filter({trial_type: 'image-keyboard-response'}).count();
+             var accuracy = Math.round(jsPsych.data.get().filter({correct: true}).count() / total_trials * 100);
+             var congruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'congruent'}).select('rt').mean());
+             var incongruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'incongruent'}).select('rt').mean());
+             var rt = Math.round(jsPsych.data.get().filter({correct: true}).select('rt').mean());
+             return "<p>You responded correctly on <strong>"+accuracy+"%</strong> of the trials.</p> " +
+	      "<p>Your average response time for correct trials was <strong>" + rt + "ms</strong>.</p>"+ 
+              "<p>Press any key to start the experiment. Thank you!</p>";
+           }
+         };
+
+        var takerest = {
+           type: "html-keyboard-response",
+           stimulus: "<p> Please take a break.</p>"+
            "<p> Press any key to begin next block.</p>",
-           post_trial_gap: 3000
+           post_trial_gap: 2000
         };
 		
 		
@@ -156,14 +156,14 @@
           }
         };
 		
-		// generate a random subject ID with 15 characters
-var subject_id = jsPsych.randomization.randomID(15);
+	 // generate a random subject ID with 15 characters
+        var subject_id = jsPsych.randomization.randomID(15);
 
-// this adds a property called 'subject' and a property called 'condition' to every trial
-jsPsych.data.addProperties({
-  subject: subject_id,
+        // this adds a property called 'subject' and a property called 'condition' to every trial
+         jsPsych.data.addProperties({
+         subject: subject_id,
 
-});
+           });
 
         /*set up experiment structure*/
         var timeline = [];

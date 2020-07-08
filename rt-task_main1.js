@@ -112,7 +112,9 @@
             var accuracy = Math.round(jsPsych.data.get().filter({correct: true}).count() / total_trials * 100);
             var congruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'congruent'}).select('rt').mean());
             var incongruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'incongruent'}).select('rt').mean());
+            var rt = Math.round(correct_trials.select('rt').mean());
             return "<p>You responded correctly on <strong>"+accuracy+"%</strong> of the trials.</p> " +
+		    "<p>Your average response time for correct trials was <strong>" + rt + "ms</strong>.</p>"+
             "<p>Press any key to start the experiment. Thank you!</p>";
           }
         };
@@ -169,6 +171,10 @@ jsPsych.data.addProperties({
         timeline.push(instructions);
         timeline.push(prac_procedure);
         timeline.push(feedback);
+
+        timeline.push(test_procedure);
+        timeline.push(debrief1);
+	timeline.push(takerest);
 
         timeline.push(test_procedure);
         timeline.push(debrief1);

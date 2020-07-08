@@ -95,7 +95,7 @@
        timeline: [fixation, test],
        timeline_variables: test_stimuli,
        randomize_order: true,
-       repetitions: 6
+       repetitions: 2
      };
 
        var takerest = {
@@ -135,8 +135,7 @@ jsPsych.data.addProperties({
         timeline.push(welcome);
         timeline.push(instructions);
         timeline.push(test_procedure);
-	timeline.push(testrest);
-        timeline.push(instructions);
+	timeline.push(instructions);
 	timeline.push(test_procedure);
         timeline.push(debrief);
 

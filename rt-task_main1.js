@@ -66,7 +66,7 @@
       choices: jsPsych.NO_KEYS,
       trial_duration: 300,
 	  data: {test_part: 'fixation'}
-    }
+    };
     
    /* defining test timeline */
         var test = {
@@ -96,7 +96,7 @@
        timeline_variables: test_stimuli,
        randomize_order: true,
        repetitions: 6
-     }
+     };
 
        var takerest = {
           type: "html-keyboard-response",

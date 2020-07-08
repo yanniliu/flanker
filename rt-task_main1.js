@@ -19,7 +19,7 @@
             "<img src='" + repo_site + "img/inc1.png'></img>"+
             "<p>Press the left arrow key if the middle arrow is pointing left. (<)</p>"+
             "<p>Press the right arrow key if the middle arrow is pointing right. (>)</p>"+
-            "<p>Press any key to begin.</p>",
+            "<p>Press any key to begin the practice.</p>",
           post_trial_gap: 1000
         };
 
@@ -95,18 +95,51 @@
        timeline: [fixation, test],
        timeline_variables: test_stimuli,
        randomize_order: true,
-       repetitions: 2
+       repetitions: 3
      };
 
-       var takerest = {
+     var prac_procedure = {
+       timeline: [fixation, test],
+       timeline_variables: test_stimuli,
+       randomize_order: true,
+       repetitions: 1
+     };
+
+     var feedback = {
+          type: "html-keyboard-response",
+          stimulus: function() {
+            var total_trials = jsPsych.data.get().filter({trial_type: 'image-keyboard-response'}).count();
+            var accuracy = Math.round(jsPsych.data.get().filter({correct: true}).count() / total_trials * 100);
+            var congruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'congruent'}).select('rt').mean());
+            var incongruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'incongruent'}).select('rt').mean());
+            return "<p>You responded correctly on <strong>"+accuracy+"%</strong> of the trials.</p> " +
+            "<p>Press any key to start the experiment. Thank you!</p>";
+          }
+        };
+
+      var takerest = {
           type: "html-keyboard-response",
           stimulus: "<p> Please take a break.</p>"+
-           "<p>Press any key to begin.</p>",
+           "<p> Press any key to begin next block.</p>",
            post_trial_gap: 3000
         };
 		
 		
         /*defining debriefing block*/
+        var debrief1 = {
+          type: "html-keyboard-response",
+          stimulus: function() {
+            var total_trials = jsPsych.data.get().filter({trial_type: 'image-keyboard-response'}).count();
+            var accuracy = Math.round(jsPsych.data.get().filter({correct: true}).count() / total_trials * 100);
+            var congruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'congruent'}).select('rt').mean());
+            var incongruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'incongruent'}).select('rt').mean());
+            return "<p>You responded correctly on <strong>"+accuracy+"%</strong> of the trials.</p> " +
+            "<p>Your average response time for congruent trials was <strong>" + congruent_rt + "ms</strong>.</p>"+
+            "<p>Your average response time for incongruent trials was <strong>" + incongruent_rt + "ms</strong>.</p>"+
+            "<p>Press any key to  proceed</p>";
+          }
+        };
+
         var debrief = {
           type: "html-keyboard-response",
           stimulus: function() {
@@ -134,9 +167,13 @@ jsPsych.data.addProperties({
         var timeline = [];
         timeline.push(welcome);
         timeline.push(instructions);
+        timeline.push(prac_procedure);
+        timeline.push(feedback);
+
         timeline.push(test_procedure);
-        timeline.push(debrief);
+        timeline.push(debrief1);
 	timeline.push(takerest);
+
 	timeline.push(test_procedure);
         timeline.push(debrief);
 

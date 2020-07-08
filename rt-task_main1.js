@@ -114,7 +114,7 @@
             var incongruent_rt = Math.round(jsPsych.data.get().filter({correct: true, stim_type: 'incongruent'}).select('rt').mean());
             var rt = Math.round(correct_trials.select('rt').mean());
             return "<p>You responded correctly on <strong>"+accuracy+"%</strong> of the trials.</p> " +
-		    "<p>Your average response time for correct trials was <strong>" + rt + "ms</strong>.</p>"+
+	    "<p>Your average response time for correct trials was <strong>" + rt + "ms</strong>.</p>"+
             "<p>Press any key to start the experiment. Thank you!</p>";
           }
         };
